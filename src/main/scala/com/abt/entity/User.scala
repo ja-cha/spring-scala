@@ -10,20 +10,11 @@ import scala.beans.BeanProperty
   * Created by jabt on 1/27/19.
   */
 @Entity
-case class User(
-                 @BeanProperty
-                 var name: String,
-
-                 @BeanProperty
-                 var birthDate: Date
-
-               ) {
-
-
+case class User(name: String, birthDate: Date) {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  @BeanProperty
+  @BeanProperty //generate getter and setter method according to Java standard
   var id: Long = _
 
 
