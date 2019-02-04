@@ -13,19 +13,19 @@ class UserRepositoryImpl extends UserRepository {
 
   override def findAll: Iterable[User] = users
 
-  override def findByUserId(userId: Long): Option[User] = None
+  override def findByUserId(id: Long): Option[User] = None
 
-  override def findUserByUsername(username: String): Option[User] = None
+  override def findUserByUsername(name: String): Option[User] = None
 
   override def save(user: User): Long = {
 
-    val u = new User(users.size, user.username, user.password, user.enabled)
+    val u = new User(user.name, user.birthDate)
     users :+ u
     u.id
   }
 
   override def update(user: User): Long = {
-    val u = new User(users.size, user.username, user.password, user.enabled)
+    val u = new User(user.name, user.birthDate)
     users :+ u
     u.id
   }
