@@ -10,7 +10,7 @@ import scala.beans.BeanProperty
   * Created by jabt on 1/27/19.
   */
 @Entity
-case class User(name: String, birthDate: Date) {
+case class User(@BeanProperty name: String, @BeanProperty birthDate: Date) {
 
   /**
     * The JPA framework is interacting with this class via it's id property.

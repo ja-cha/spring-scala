@@ -14,7 +14,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder
   */
 @RestController
 @RequestMapping(path = Array("/api"))
-class UserController(@Autowired val userService: UserService, @Autowired val dataSource: DataSource) {
+class UserResource(@Autowired val userService: UserService, @Autowired val dataSource: DataSource) {
 
   @GetMapping(path = Array("/users"))
   def getAllUsers(): Iterable[User] = {
@@ -22,8 +22,12 @@ class UserController(@Autowired val userService: UserService, @Autowired val dat
   }
 
   @GetMapping(path = Array("/users/{id}"))
-  def getUser(@PathVariable id: Long): Option[User] = {
-    userService.getUser(id)
+  def getUser(@PathVariable id: Long): User = {
+    userService.getUser(id) match {
+      case Some(value) => value
+      case None => throw UserNotFoundException(s"id-$id")
+    }
+
   }
 
   @PostMapping(path = Array("/user"))
