@@ -19,11 +19,9 @@ class UserRepositoryImpl extends UserRepository {
 
   override def findUserByUsername(name: String): Option[User] = {
     users.find(u => u.name == name)
-
   }
 
   override def save(user: User): Long = {
-
     val u =  User(user.name, user.birthDate)
     users += u
     u.id
@@ -40,6 +38,4 @@ object UserRepositoryImpl {
   def apply: UserRepositoryImpl = {
     new UserRepositoryImpl()
   }
-
-  def init = apply
 }
