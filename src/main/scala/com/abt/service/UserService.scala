@@ -5,6 +5,8 @@ import com.abt.repository.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
+import scala.concurrent.JavaConversions
+
 /**
   * Created by jabt on 1/27/19.
   */
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Component
 class UserService(@Autowired private val userRepository: UserRepository) {
 
   def listUsers(): Iterable[User] = {
+
     userRepository.findAll
   }
   def getUser(id: Long): Option[User] = {

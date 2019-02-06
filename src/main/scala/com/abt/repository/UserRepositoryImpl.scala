@@ -11,7 +11,9 @@ class UserRepositoryImpl extends UserRepository {
 
   var users = ArrayBuffer[User]()
 
-  override def findAll: Iterable[User] = users
+  override def findAll: Iterable[User] = {
+    users
+  }
 
   override def findByUserId(id: Long): Option[User] = {
     users.find(u => u.id == id)

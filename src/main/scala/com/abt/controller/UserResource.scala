@@ -9,6 +9,8 @@ import org.springframework.http.{HttpStatus, ResponseEntity}
 import org.springframework.web.bind.annotation.{PostMapping, _}
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder
 
+import scala.collection.JavaConverters
+
 /**
   * Created by jabt on 1/27/19.
   */
@@ -17,8 +19,9 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder
 class UserResource(@Autowired val userService: UserService, @Autowired val dataSource: DataSource) {
 
   @GetMapping(path = Array("/users"))
-  def getAllUsers(): Iterable[User] = {
-    userService.listUsers
+  //spring expects a java collection type, so a conversion is necessary
+  def getAllUsers(): java.lang.Iterable[User] = {
+    JavaConverters.asJavaIterable(userService.listUsers)
   }
 
   @GetMapping(path = Array("/users/{id}"))
