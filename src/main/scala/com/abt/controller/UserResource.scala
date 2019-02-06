@@ -2,7 +2,6 @@ package com.abt.controller
 
 import javax.sql.DataSource
 
-import com.abt.entity.User
 import com.abt.service.UserService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.{HttpStatus, ResponseEntity}
@@ -15,7 +14,6 @@ import scala.collection.JavaConverters
   * Created by jabt on 1/27/19.
   */
 @RestController
-@RequestMapping(path = Array("/api"))
 class UserResource(@Autowired val userService: UserService, @Autowired val dataSource: DataSource) {
 
   @GetMapping(path = Array("/users"))

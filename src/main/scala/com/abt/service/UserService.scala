@@ -1,6 +1,6 @@
 package com.abt.service
 
-import com.abt.entity.User
+import com.abt.controller.User
 import com.abt.repository.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component

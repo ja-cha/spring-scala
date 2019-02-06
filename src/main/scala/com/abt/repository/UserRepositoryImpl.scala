@@ -1,6 +1,6 @@
 package com.abt.repository
 
-import com.abt.entity.User
+import com.abt.controller.User
 
 import scala.collection.mutable.ArrayBuffer
 

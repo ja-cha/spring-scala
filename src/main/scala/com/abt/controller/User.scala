@@ -1,4 +1,4 @@
-package com.abt.entity
+package com.abt.controller
 
 import java.util.Date
 import javax.persistence.{Entity, GeneratedValue, GenerationType, Id}
@@ -10,7 +10,13 @@ import scala.beans.BeanProperty
   * Created by jabt on 1/27/19.
   */
 @Entity
+//interacting with JPA requires a bean according to the Java Bean convention
 case class User(@BeanProperty name: String, @BeanProperty birthDate: Date) {
+
+  //interacting with JPA requires an explicit default constructor
+  def this() {
+    this("", new Date())
+  }
 
   /**
     * The JPA framework is interacting with this class via it's id property.
