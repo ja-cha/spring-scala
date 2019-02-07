@@ -24,13 +24,13 @@ class UserRepositoryImpl extends UserRepository {
   }
 
   override def save(user: User): Long = {
-    val u =  User(user.name, user.birthDate)
+    val u =  User(user.birthDate, user.name)
     users += u
     u.id
   }
 
   override def update(user: User): Long = {
-    val u = User(user.name, user.birthDate)
+    val u = User(user.birthDate, user.name)
     users += u
     u.id
   }

@@ -1,7 +1,8 @@
 package com.abt.controller
 
 import java.util.Date
-import javax.persistence._
+import javax.persistence.{ManyToOne, _}
+
 
 import scala.beans.BeanProperty
 
@@ -11,15 +12,7 @@ import scala.beans.BeanProperty
   */
 @Entity
 //interacting with JPA requires a bean according to the Java Bean convention
-case class User(
-             //@OneToMany(mappedBy="user") posts:List[Post],
-                @BeanProperty birthDate: Date,
-                @BeanProperty name: String) {
-
-  //interacting with JPA requires an explicit default constructor
-  def this() {
-    this(new Date(), "")
-  }
+case class Post(@BeanProperty description: String) {
 
   /**
     * The JPA framework is interacting with this class via it's id property.
@@ -32,6 +25,14 @@ case class User(
   @BeanProperty
   var id: Long = _
 
+  @BeanProperty
+  @ManyToOne(fetch=FetchType.LAZY)
+  var user: User = _
+
+  //interacting with JPA requires an explicit default constructor
+  def this() {
+    this("")
+  }
 
 
 }
