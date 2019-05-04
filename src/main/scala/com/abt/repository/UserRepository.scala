@@ -1,6 +1,6 @@
 package com.abt.repository
 
-import com.abt.entity.User
+import com.abt.controller.User
 import org.springframework.data.repository.{CrudRepository, RepositoryDefinition}
 
 import scala.collection.JavaConverters._

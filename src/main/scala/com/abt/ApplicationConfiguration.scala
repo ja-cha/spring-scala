@@ -13,7 +13,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource
 class ApplicationConfiguration {
 
   @Bean
-  def initUserRepositoryBean() = UserRepositoryImpl.init
+  def initUserRepositoryBean() = UserRepositoryImpl.apply
 
 //  @Value("${spring.datasource.url}")
 //  var url:String= _

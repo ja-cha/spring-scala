@@ -13,6 +13,7 @@ class ApplicationSecurityConfiguration  extends WebSecurityConfigurerAdapter{
     def configure(web: WebSecurity)={
       web
         .ignoring()
+        //.antMatchers("/api/users**");
         .antMatchers("/**");
     }
 
