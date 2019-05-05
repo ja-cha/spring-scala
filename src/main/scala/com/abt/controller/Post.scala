@@ -14,6 +14,11 @@ import scala.beans.BeanProperty
 //interacting with JPA requires a bean according to the Java Bean convention
 case class Post(@BeanProperty description: String) {
 
+  //interacting with JPA requires an explicit default constructor
+  def this() {
+    this("")
+  }
+
   /**
     * The JPA framework is interacting with this class via it's id property.
     * It expects a bean structured in accordance to the Java Bean convention i.e., with getter and setter methods.
@@ -21,7 +26,8 @@ case class Post(@BeanProperty description: String) {
     *
     */
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(generator="post_seq")
+  @SequenceGenerator(name="post_seq",sequenceName="post_seq", allocationSize=1)
   @BeanProperty
   var id: Long = _
 
@@ -29,10 +35,7 @@ case class Post(@BeanProperty description: String) {
   @ManyToOne(fetch=FetchType.LAZY)
   var user: User = _
 
-  //interacting with JPA requires an explicit default constructor
-  def this() {
-    this("")
-  }
+
 
 
 }

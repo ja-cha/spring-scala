@@ -13,11 +13,13 @@ import scala.beans.BeanProperty
 //interacting with JPA requires a bean according to the Java Bean convention
 case class User(
              //@OneToMany(mappedBy="user") posts:List[Post],
-
-               @BeanProperty birthDate: Date,
+                @BeanProperty birthDate: Date,
                 @BeanProperty name: String) {
 
   //interacting with JPA requires an explicit default constructor
+  def this() {
+    this(new Date(), "")
+  }
 
   /**
     * The JPA framework is interacting with this class via it's id property.
@@ -26,7 +28,8 @@ case class User(
     *
     */
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(generator="user_seq_gen")
+  @SequenceGenerator(name="user_seq_gen",sequenceName="user_seq", initialValue = 10, allocationSize = 100)
   @BeanProperty
   var id: Long = _
 

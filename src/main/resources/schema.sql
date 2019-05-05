@@ -1,34 +1,24 @@
 DROP TABLE IF EXISTS PUBLIC.USER;
-create table PUBLIC.USER
+DROP SEQUENCE IF EXISTS PUBLIC.user_seq;
+CREATE SEQUENCE user_seq;
+CREATE TABLE PUBLIC.USER
 (
-    id bigint auto_increment,
+    id bigint  default user_seq.nextval auto_increment primary key ,
     birth_date TIMESTAMP(26,6),
     name VARCHAR(255)
 );
 
-create unique index USER_id_index
-    on PUBLIC.USER (id);
-
-alter table PUBLIC.USER
-    add constraint USER_pk
-        primary key (id);
-
-
+DROP TABLE IF EXISTS PUBLIC.POST;
+DROP SEQUENCE IF EXISTS PUBLIC.post_seq;
+CREATE SEQUENCE post_seq;
 DROP TABLE IF EXISTS PUBLIC.POST;
 create table PUBLIC.POST
 (
-    id bigint auto_increment,
+    id bigint  default post_seq.nextval auto_increment primary key ,
     post varchar(255),
     user_id bigint
 );
 
-
-create unique index POST_id_index
-    on PUBLIC.POST (id);
-
-alter table PUBLIC.POST
-    add constraint POST_pk
-        primary key (id);
 
 alter table PUBLIC.POST
     add constraint POST_USER_ID_fk
