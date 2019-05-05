@@ -12,7 +12,8 @@
    
    ```Create User```
    
-   ```curl -X POST --header 'Content-Type: application/json' --header 'Accept: text/plain' -d '{
+   ```
+   curl -X POST --header 'Content-Type: application/json' --header 'Accept: text/plain' -d '{
         "birthDate": "2019-05-05T06:22:03.035Z",
         "id": 1005,
         "name": "John"
