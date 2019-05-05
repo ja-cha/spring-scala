@@ -10,30 +10,24 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource
   */
 
 @Configuration
-class ApplicationConfiguration {
+class ApplicationConfiguration(@Value("${spring.datasource.url}") url:String,
+                               @Value("${spring.datasource.driverClassName}") driverClassName:String,
+                               @Value("${spring.datasource.username}") username:String,
+                               @Value("${spring.datasource.password}") password:String) {
 
   @Bean
-  def initUserRepositoryBean() = UserRepositoryImpl.apply
+  def initUserRepositoryBean() =  new UserRepositoryImpl()
 
-//  @Value("${spring.datasource.url}")
-//  var url:String= _
-//  @Value("${spring.datasource.driverClassName}")
-//  var driverClassName:String= _
-//  @Value("${spring.datasource.username}")
-//  var username:String= _
-//  @Value("${spring.datasource.password}")
-//  var password:String= _
-//
-//  @Bean
-//  def initDataSource()= {
-//
-//    val ds = new DriverManagerDataSource()
-//    ds.setUrl(url)
-//    ds.setDriverClassName(driverClassName)
-//    ds.setUsername(username)
-//    ds.setPassword(password)
-//    ds
-//  }
+  @Bean
+  def initDataSource()= {
+
+    val ds = new DriverManagerDataSource()
+    ds.setUrl(url)
+    ds.setDriverClassName(driverClassName)
+    ds.setUsername(username)
+    ds.setPassword(password)
+    ds
+ }
 
 
 }

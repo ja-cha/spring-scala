@@ -5,7 +5,6 @@ import com.abt.repository.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
-import scala.concurrent.JavaConversions
 
 /**
   * Created by jabt on 1/27/19.
